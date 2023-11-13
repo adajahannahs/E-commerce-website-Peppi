@@ -1,0 +1,33 @@
+body {
+    height: 3000px;
+    padding-left: 60px;
+    padding-right: 60px;
+}
+
+.category-container {
+    display: flex;
+    flex-direction: column;
+    margin-left: 20px;
+    height: 50px;
+}
+
+.category {
+    margin-bottom: 10px;
+    font-weight: bold;
+    color: blue;
+}
+
+.category-box-button {
+    width: 1200px;
+}
+
+.category-button {
+    margin-right: 24px;
+    padding: 8px 10px;
+    background-color: white;
+    border-style: solid;
+    border-color: blue;
+    border-width: 1px;
+    border-radius: 4px;
+
+}
