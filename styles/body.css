@@ -2,6 +2,7 @@ body {
     height: 3000px;
     padding-left: 60px;
     padding-right: 60px;
+    font-family: Montserrat;
 }
 
 .category-container {
@@ -9,20 +10,28 @@ body {
     flex-direction: column;
     margin-left: 20px;
     height: 50px;
+    align-items: center;
 }
 
 .category {
-    margin-bottom: 10px;
+    font-family: Montserrat;
+    font-weight: 700;
+    font-size: 24px;
+    margin-bottom: 20px;
     font-weight: bold;
     color: blue;
 }
 
 .category-box-button {
     width: 1200px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }
 
 .category-button {
-    margin-right: 24px;
+    font-family: Montserrat;
+    font-weight: 500;
     padding: 8px 10px;
     background-color: white;
     border-style: solid;
@@ -30,4 +39,71 @@ body {
     border-width: 1px;
     border-radius: 4px;
 
+}
+
+.product-container {
+    align-items: ;
+    margin-top: 50px;
+    margin-left: 20px;
+    width: 272px;
+    border-style: solid;
+    border-width: 1.2px;
+    border-radius: 4px;
+    border-color: blue;
+    padding-bottom: 10px;
+}
+
+.image-container{
+   
+}
+
+.product-image {
+    width: 272px;
+    height: 277px;
+    border-radius: 4px;
+    object-fit: cover;
+}
+
+
+.product-name-container{
+    display: flex;
+    margin-top: 8px;
+    margin-bottom: 14px;
+}
+
+.product-name{
+    margin-right: 50px;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.priceofproduct-and-addtoCart{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.name-price-addtoCart-container {
+    padding-left: 8px;
+    padding-right: 8px;
+}
+
+.add-to-cart-button {
+    font-family: Montserrat;
+    font-weight: 700;
+    background-color: rgb(255, 121, 143);
+    border: none;
+    padding: 10px 12px;
+    font-weight: bold;
+    border-radius: 12px;
+    font-size: 10px;
+    color: rgb(12, 3, 4);
+
+}
+
+.product-collection{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }
