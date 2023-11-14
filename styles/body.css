@@ -42,7 +42,6 @@ body {
 }
 
 .product-container {
-    align-items: ;
     margin-top: 50px;
     margin-left: 20px;
     width: 272px;
@@ -103,7 +102,8 @@ body {
 }
 
 .product-collection{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    column-gap: 14px;
+    row-gap: 14px;
 }
