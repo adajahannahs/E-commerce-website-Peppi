@@ -55,6 +55,9 @@
 .logo-of-the-website {
     margin-left: 90px;
     height: 20px;
+    color: rgb(223, 83, 107);
+    font-weight: 700;
+    font-size: 24px;
 }
 
 .search-bar {
