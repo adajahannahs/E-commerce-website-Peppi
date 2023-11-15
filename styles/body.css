@@ -8,9 +8,10 @@ body {
 .category-container {
     display: flex;
     flex-direction: column;
-    margin-left: 20px;
+    margin-left: 48px;
     height: 50px;
     align-items: center;
+    padding-right: 8px;
 }
 
 .category {
@@ -23,7 +24,7 @@ body {
 }
 
 .category-box-button {
-    width: 1200px;
+    width: 1210px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;

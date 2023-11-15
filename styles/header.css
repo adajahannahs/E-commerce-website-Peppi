@@ -43,11 +43,11 @@
 }
 
 .right-section-header {
-    width: 20px;
+    width: 100px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-right: 72px;
+    margin-right: 45px;
     flex-shrink: 0;
    
 }
@@ -72,3 +72,14 @@
     box-shadow: inset 1px 2px 3px rgba(0, 0, 0, 0.05);
     width: 0px;
 }
+
+.cart-top-button {
+    border: none;
+    background-color: white;
+}
+
+.black-cart-icon {
+    width: 24px;
+    
+}
+

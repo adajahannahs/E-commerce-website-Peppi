@@ -6,7 +6,7 @@ body{
 .cart-container {
     display: flex;
     flex-direction: row;
-    padding-left: 50px;
+    padding-left: 80px;
     padding-top: 10px;
 }
 
@@ -144,13 +144,4 @@ body{
 
 }
 
-.cart-top-button {
-    border: none;
-    background-color: white;
-}
-
-.black-cart-icon {
-    width: 24px;
-    
-}
 
