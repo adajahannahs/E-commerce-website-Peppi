@@ -17,7 +17,7 @@ body {
 .category {
     font-family: Montserrat;
     font-weight: 700;
-    font-size: 16px;
+    font-size: 24px;
     margin-bottom: 20px;
     font-weight: bold;
     color: rgb(13, 28, 16);
@@ -34,13 +34,47 @@ body {
     font-family: Montserrat;
     font-weight: 500;
     padding: 8px 10px;
-    background-color: white;
-    border-style: solid;
-    border-color: rgb(31, 65, 114);
-    border-width: 1px;
-    border-radius: 4px;
+    background-color: transparent;
+    border: none;
     font-size: 16px;
+    transition: 0.3s;
 }
+
+.category-button:hover  {
+    color: rgb(255, 118, 118);
+    position: relative;
+}
+
+ul  {
+    list-style: none;
+    
+}
+
+ul li a {
+    text-decoration: none;
+}
+
+ul li {
+    margin-bottom: 16px;
+}
+
+
+
+.category-button:hover .drop-down-items {
+    color: rgb(255, 118, 118);
+    position: absolute;
+    opacity: 1;
+    background-color: black;
+    
+}
+
+.drop-down-items  {
+   position: absolute;
+   opacity: 0;
+   padding-right: 50px;
+   
+}
+
 
 .product-container {
     margin-top: 50px;
