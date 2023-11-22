@@ -8,34 +8,12 @@
     <link rel="stylesheet" href="cart-styles/cart.css">
     <link rel="stylesheet" href="cart-styles/cart-header.css">
 
-    <script>
-        function getProductInfo() {
-            const queryString = window.location.search;
-            const urlParams = new URLSearchParams(queryString);
-            const productInfo = urlParams.get('product');
+    <!-- Add React and ReactDOM scripts -->
+    <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
 
-            if (productInfo) {
-                const parsedProductInfo = JSON.parse(decodeURIComponent(productInfo));
-                document.getElementById('product-image').src = parsedProductInfo.image;
-                document.getElementById('product-name').innerText = parsedProductInfo.name;
-                document.getElementById('product-price').innerText = parsedProductInfo.price;
-                // Add more code to display other product information
-            }
-        }
-
-        window.onload = getProductInfo;
-
-        function addToCart() {
-            const productInfo = {
-                'image': document.getElementById('product-image').src,
-                'name': document.getElementById('product-name').innerText,
-                'price': document.getElementById('product-price').innerText
-            };
-            const checkoutUrl = 'checkout.html';
-            const queryString = '?product=' + encodeURIComponent(JSON.stringify(productInfo));
-            window.location.href = checkoutUrl + queryString;
-        }
-    </script>
+    <!-- Add Babel to transform JSX and ES6/7 code into ES5 code -->
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
 </head>
 <body>
     <div class="fixed-to-the-top-header">
@@ -43,7 +21,7 @@
             <div class="left-section-header">
                 <div class="logo-of-the-website">
                     PEPPI'S WORLD
-                </div> 
+                </div>
             </div>
             <div class="middle-section-header">
                 <input class="search-bar" type="text" placeholder="Search">
@@ -62,33 +40,27 @@
         <div>
             <img id="product-image" class="cart-product-image" alt="">
         </div>
-        
+
         <div class="product-description-price">
             <div class="product-name" id="product-name">
                 Name of Product
             </div>
             <div class="select-size-box">
-                select size
-            </div>
-            <div class="size-container">
-                <button class="size-button">
-                    38
-                </button>
-                <button class="size-button">
-                    39
-                </button>
-                <button class="size-button">
-                    40
-                </button>
+                Select size:
+                <button class="size-button" onclick="setSize('38')">38</button>
+                <button class="size-button" onclick="setSize('39')">39</button>
+                <button class="size-button" onclick="setSize('40')">40</button>
             </div>
             <div class="color-section">
-                Colours Available
+                Select color:
+                <select id="color-selector" onchange="setColor()">
+                    <option value="green">Green</option>
+                    <option value="yellow">Yellow</option>
+                    <option value="black">Black</option>
+                </select>
             </div>
-            <div class="color-container">
-                <button class="green-button"></button>
-                <button class="yellow-button"></button>
-                <button class="black-button"></button>
-            </div><br>
+
+            <!-- Other product details -->
 
             <div class="price-cart-section" id="product-price">
                 PRICE
@@ -103,5 +75,58 @@
             </div>
         </div>
     </div>
+
+    <!-- Add a root div for React rendering -->
+    <div id="cart-root"></div>
+
+    <script type="text/babel">
+        let selectedSize = '';
+        let selectedColor = '';
+
+        function setSize(size) {
+            selectedSize = size;
+        }
+
+        function setColor() {
+            selectedColor = document.getElementById('color-selector').value;
+        }
+
+        function getProductInfo() {
+            const queryString = window.location.search;
+            const urlParams = new URLSearchParams(queryString);
+            const productInfo = urlParams.get('product');
+
+            if (productInfo) {
+                const parsedProductInfo = JSON.parse(decodeURIComponent(productInfo));
+                document.getElementById('product-image').src = parsedProductInfo.image;
+                document.getElementById('product-name').innerText = parsedProductInfo.name;
+                document.getElementById('product-price').innerText = parsedProductInfo.price;
+            }
+        }
+
+        function addToCart() {
+            const productInfo = {
+                'image': document.getElementById('product-image').src,
+                'name': document.getElementById('product-name').innerText,
+                'price': document.getElementById('product-price').innerText,
+                'size': selectedSize,
+                'color': selectedColor
+            };
+
+            // Retrieve existing cart items from localStorage or initialize an empty array
+            const storedCartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+
+            // Add the new product to the cart items
+            storedCartItems.push(productInfo);
+
+            // Save the updated cart items back to localStorage
+            localStorage.setItem('cartItems', JSON.stringify(storedCartItems));
+
+            // Redirect to the checkout page
+            window.location.href = 'checkout.html';
+        }
+
+        window.onload = getProductInfo;
+    </script>
 </body>
 </html>
