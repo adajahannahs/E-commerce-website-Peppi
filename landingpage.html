@@ -10,7 +10,26 @@
 
           <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-
+          <script>
+            document.addEventListener("DOMContentLoaded", function () {
+                const searchInput = document.getElementById('searchInput');
+                const productContainers = document.querySelectorAll('.product-container');
+        
+                searchInput.addEventListener('input', function () {
+                    const searchValue = this.value.toLowerCase();
+        
+                    productContainers.forEach(container => {
+                        const productName = container.querySelector('.product-name').innerText.toLowerCase();
+                        const displayStyle = productName.includes(searchValue) ? 'block' : 'none';
+                        container.style.display = displayStyle;
+                    });
+                });
+            });
+        
+            function redirectToCart(productInfo) {
+                window.location.href = 'cart.html?product=' + encodeURIComponent(JSON.stringify(productInfo));
+            }
+        </script>
     </head>
     <body class="whole-body">
         <div class="fixed-to-the-top-header">
@@ -21,7 +40,8 @@
                    </div> 
                 </div>
                 <div class="middle-section-header">
-                    <input class="search-bar" type="text" placeholder="Search">
+                    <input class="search-bar" type="text" placeholder="Search" id="searchInput">
+
                 </div>
                 <div class="right-section-header">
                     <button class="cart-top-button">
