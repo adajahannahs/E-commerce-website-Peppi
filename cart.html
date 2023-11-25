@@ -100,7 +100,10 @@
                 const parsedProductInfo = JSON.parse(decodeURIComponent(productInfo));
                 document.getElementById('product-image').src = parsedProductInfo.image;
                 document.getElementById('product-name').innerText = parsedProductInfo.name;
-                document.getElementById('product-price').innerText = parsedProductInfo.price;
+
+                // Remove commas from the price
+                const priceWithoutCommas = parsedProductInfo.price.replace(/,/g, '');
+                document.getElementById('product-price').innerText = priceWithoutCommas;
             }
         }
 
@@ -112,6 +115,9 @@
                 'size': selectedSize,
                 'color': selectedColor
             };
+
+            // Remove commas from the price before storing in the cart
+            productInfo.price = productInfo.price.replace(/,/g, '');
 
             // Retrieve existing cart items from localStorage or initialize an empty array
             const storedCartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
