@@ -1,212 +1,73 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
+const renderCheckoutPage = (cartItems) => {
+    ReactDOM.render(
+        <div class="checkout-container">
+            <center><h1>Checkout Page</h1></center>
 
-    <link rel="stylesheet" href="checkoutstyles/checkout.css"> 
-    <link rel="stylesheet" href="checkoutstyles/checkout-header.css">  
-
-    <!-- Add React and ReactDOM scripts -->
-    <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
-    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
-
-    <!-- Add Babel to transform JSX and ES6/7 code into ES5 code -->
-    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
-</head>
-<body>
-    <div class="fixed-to-the-top-header">
-        <div class="header">
-            <div class="left-section-header">
-                <div class="logo-of-the-website">
-                    PEPPI'S WORLD
-                </div> 
-            </div>
-            
-            <div class="right-section-header">
-                Shopping Cart
-            </div>
-        </div>
-    </div>
-
-    <!-- Add a root div for React rendering -->
-    <div id="checkout-root"></div>
-
-    <style>
-        /* Add this style block to set the size of the product image */
-        .cart-product-image {
-            width: 60px; /* Set your desired width */
-            height: auto; /* Maintain aspect ratio */
-        }
-
-        /* Add style for the cart boxes */
-        .cart-box {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            border-bottom: 1px solid #ccc;
-            padding: 10px;
-            margin-bottom: 10px;
-        }
-
-        /* Add style for the remove icon */
-        .remove-icon {
-            cursor: pointer;
-        }
-
-        /* Add style for the total container and checkout button */
-        .total-container {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 20px;
-            padding: 10px;
-            border-top: 1px solid #ccc;
-        }
-
-        .checkout-button {
-            padding: 10px;
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-        .remove-add-container {
-            display: flex;
-            gap: 5px;
-            cursor: pointer; /* Add this to make the cursor change on hover */
-        }
-    </style>
-
-    <script type="text/babel">
-        // React code to render CheckoutPage component
-        const CheckoutPage = () => {
-            // Retrieve cartItems from localStorage
-            const storedCartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
-
-            // Function to update quantity
-            const updateQuantity = (operation, index) => {
-                const updatedCartItems = [...storedCartItems];
-                const currentItem = updatedCartItems[index];
-
-                switch (operation) {
-                    case '+':
-                        currentItem.quantity += 1;
-                        break;
-                    case '-':
-                        currentItem.quantity -= 1;
-                        break;
-                    default:
-                        break;
-                }
-
-                if (currentItem.quantity <= 0) {
-                    // Remove item from the cart if the quantity is zero or less
-                    updatedCartItems.splice(index, 1);
-                }
-
-                // Update localStorage
-                localStorage.setItem('cartItems', JSON.stringify(updatedCartItems));
-                renderCheckoutPage(updatedCartItems);
-            };
-
-            // Function to calculate total price
-            const calculateTotal = (cartItems) => {
-                return cartItems.reduce((total, item) => total + (item.quantity * item.price), 0);
-            };
-
-            // Function to handle removal of an item from the cart
-            const removeItem = (index) => {
-                const updatedCartItems = [...storedCartItems];
-                updatedCartItems.splice(index, 1);
-
-                // Update localStorage
-                localStorage.setItem('cartItems', JSON.stringify(updatedCartItems));
-                renderCheckoutPage(updatedCartItems);
-            };
-
-            // Function to handle checkout
-            const handleCheckout = (cartItems) => {
-                // Implement your checkout logic here
-                console.log('Checkout logic:', cartItems);
-                // Redirect to the checkout page or perform other actions as needed
-            };
-
-            // Function to render the CheckoutPage component
-            const renderCheckoutPage = (cartItems) => {
-                ReactDOM.render(
+            {cartItems.map((item, index) => (
+                <div key={index} class="cart-box">
                     <div>
-                        <h1>Checkout Page</h1>
-                        {/* Display and interact with cartItems here */}
-                        {cartItems.map((item, index) => (
-                            <div key={index} class="cart-box">
-                                <div>
-                                    <img class="cart-product-image" alt="" src={item.image} />
-                                </div>
+                        <img class="cart-product-image" alt="" src={item.image} />
+                    </div>
 
-                                <div class="code-colour-size-container">
-                                    <div class="product-name-code">
-                                        {item.name}
-                                    </div>
-                                    <div class="colour-size-container">
-                                        <div>
-                                            Color: {item.color}
-                                        </div>
-                                        <div>
-                                            Size: {item.size}
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="remove-add-container">
-                                    <div onclick={() => updateQuantity('-', index)}>
-                                        -
-                                    </div>
-                                    <button disabled>
-                                        {item.quantity}
-                                    </button>
-                                    <div onclick={() => updateQuantity('+', index)}>
-                                        +
-                                    </div>
-                                </div>
-                                <div class="product-price">
-                                    {item.price}
-                                </div>
-
-                                <div class="remove-icon" onclick={() => removeItem(index)}>
-                                    x
-                                </div>
+                    <div class="code-colour-size-container">
+                        <div class="product-name-code">
+                            {item.name}
+                        </div>
+                        <div class="colour-size-container">
+                            <div>
+                                Color: {item.color}
                             </div>
-                        ))}
-                        
-                        <div class="total-container">
-                            <div class="total-title">
-                                Total:
-                            </div>
-                            <div class="total-price">
-                                NGN {calculateTotal(cartItems).toLocaleString()}
+                            <div>
+                                Size: {item.size}
                             </div>
                         </div>
+                    </div>
 
-                        <button class="checkout-button" onclick={() => handleCheckout(cartItems)}>
-                            Checkout
+                    <div class="remove-add-container">
+                        <div onClick={() => updateQuantity('-', index)} class="quantity-button">
+                            -
+                        </div>
+                        <button disabled>
+                            {item.quantity}
                         </button>
-                    </div>,
-                    document.getElementById('checkout-root')
-                );
-            };
+                        <div onClick={() => updateQuantity('+', index)} class="quantity-button">
+                            +
+                        </div>
+                    </div>
+                    <div class="product-price">
+                        {typeof item.price === 'number' ? (
+                            <div>
+                                <span>Price:</span>
+                                <span>NGN {item.price.toLocaleString()}</span>
+                            </div>
+                        ) : (
+                            <div>Invalid Price</div>
+                        )}
+                        <div>
+                            <span>Total:</span>
+                            <span>NGN {(item.price * item.quantity).toLocaleString()}</span>
+                        </div>
+                    </div>
 
-            // Initial render
-            renderCheckoutPage(storedCartItems);
-        };
+                    <div class="remove-icon" onClick={() => removeItem(index)}>
+                        x
+                    </div>
+                </div>
+            ))}
 
-        // Render the CheckoutPage component
-        ReactDOM.render(
-            <CheckoutPage />,
-            document.getElementById('checkout-root')
-        );
-    </script>
-</body>
-</html>
+            <div class="total-container">
+                <div class="total-title">
+                    Total:
+                </div>
+                <div class="total-price">
+                    NGN {calculateTotal(cartItems).toFixed(2)}
+                </div>
+            </div>
+
+            <button class="checkout-button" onClick={() => handleCheckout(cartItems)}>
+                Checkout
+            </button>
+        </div>,
+        document.getElementById('checkout-root')
+    );
+};
