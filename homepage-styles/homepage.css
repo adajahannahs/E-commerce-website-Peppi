@@ -4,18 +4,23 @@ body {
 }
 
 .first-homepage-pic {
-   margin-left: 600px;
+   margin-left: 750px;
 }
 
 .homepage-content {
  margin-left: 80px;
  position: relative;
  width: 1200px;
- background-color: brown;
  
-
 }
 
+
+.homepage-image-container{
+    background-color: brown;
+    width: 0px;
+    position: absolute;
+    right: 1350px;
+}
 
 
 .homepage-text {
@@ -50,46 +55,3 @@ button {
     
 }
 
-@media (max-width: 600px) {
-
-
-    .homepage-content {
-        width: 100%;
-        background-color: blue;
-     }
-
-   
-}
-
-@media (min-width: 601px) {
-
-
-    .homepage-content{
-        width: 100%;
-        background-color: chocolate;
-     }
-
-   
-}
-
-@media (min-width: 768px) {
-
-
-    .homepage-content {
-        width: 100%;
-        background-color: cyan;
-     }
-
-   
-}
-
-@media (min-width: 1200px) {
-
-
-    .homepage-content {
-        width: 100%;
-        background-color: darkgreen;
-     }
-
-   
-}
