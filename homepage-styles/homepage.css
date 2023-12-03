@@ -11,14 +11,12 @@ body {
  margin-left: 80px;
  position: relative;
  width: 1200px;
+ background-color: brown;
  
 
 }
 
-.homepage-image-container{
-    position: absolute;
 
-}
 
 .homepage-text {
     font-weight: 700;
