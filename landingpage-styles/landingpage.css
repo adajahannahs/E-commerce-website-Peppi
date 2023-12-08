@@ -25,7 +25,7 @@ body {
 }
 
 .category-box-button {
-    width: 1210px;
+    width: 100%;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -117,6 +117,7 @@ ul li {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     column-gap: 130px;
+    margin-right: 10px;
 }
 
 .categoryname-shopbutton {
@@ -141,4 +142,64 @@ ul li {
     border-radius: 4px;
     font-size: 14px;
     color: white;   
+}
+
+/* @media (max-width:  870px) {
+    .logo-of-the-website {
+        font-size: 16px;
+        margin-left: 5vh;
+    }
+
+    .middle-section-header {
+        display: none;
+    }
+
+    .product-collection{
+        display: grid;
+        grid-template-columns: 1fr  ;
+        column-gap: 0px;
+    }
+
+    body {
+   
+        padding-left: 0px;
+        padding-right: 0px;
+        
+    }
+
+} */
+
+@media (max-width:  750px) {
+    .logo-of-the-website {
+        font-size: 16px;
+        margin-left: 5vh;
+    }
+
+    .middle-section-header {
+        display: none;
+    }
+
+    .product-collection{
+        display: grid;
+        grid-template-columns: 1fr 1fr ;
+        column-gap: 0;
+        padding-left: 0;
+        margin-left: 0;
+        
+    }
+
+    body {
+   
+        padding-left: 0px;
+        padding-right: 0px;
+        
+    }
+
+    .category-container {
+        margin-left: 0px;
+        padding-right: 8px;
+    }
+    
+
+    
 }

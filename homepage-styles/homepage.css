@@ -70,9 +70,6 @@ button {
         z-index: 10000;
     }
 
-    .first-homepage-pic {
-        filter: blur(4px);
-    }
 
     .homepage-text {
         margin-right: 0px;
